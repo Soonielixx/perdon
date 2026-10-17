@@ -16,7 +16,6 @@ body {
     background-color: #fce4ec;
 }
 
-/* Convierte tu imagen en un fondo de pantalla completa */
 .background-img {
     position: absolute;
     top: 0;
@@ -27,7 +26,6 @@ body {
     z-index: -1;
 }
 
-/* La cajita blanca semitransparente del centro */
 .card {
     background: rgba(255, 255, 255, 0.9);
     padding: 40px;
@@ -41,13 +39,14 @@ body {
 }
 
 .card h1 {
-    color: #6a1b9a; /* Tono morado similar al que tenías */
-    font-size: 2.5rem;
+    color: #6a1b9a;
+    font-size: 2.2rem;
     margin-bottom: 10px;
+    transition: all 0.3s ease;
 }
 
 .card p {
-    color: #f06292; /* Tono rosado similar al que tenías */
+    color: #f06292;
     font-size: 1.1rem;
     margin-bottom: 30px;
 }
@@ -55,8 +54,9 @@ body {
 .buttons {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 20px;
-    min-height: 50px; /* Evita que la tarjeta cambie de tamaño de golpe */
+    min-height: 80px;
 }
 
 .btn {
@@ -78,13 +78,17 @@ body {
 .btn-yes:hover {
     background-color: #6a1b9a;
     color: white;
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .btn-no {
     color: #d32f2f;
     border-color: #d32f2f;
-    position: relative; /* Inicia normal, el JS lo cambia a absoluto */
+}
+
+.btn-no:hover {
+    background-color: #d32f2f;
+    color: white;
 }
 
 .hidden {
