@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¿Me perdonas?</title>
-    <!-- Esto es vital: conecta el diseño (CSS) con esta página -->
     <link rel="stylesheet" href="me_perdonas.css">
 </head>
 <body>
+    <!-- 🎵 Aquí va tu música. Cambia 'cancion.mp3' por el nombre exacto de tu archivo de audio 🎵 -->
+    <audio id="bg-music" loop>
+        <source src="cancion.mp3" type="audio/mpeg">
+    </audio>
+
     <!-- Imagen de fondo -->
     <img src="foto/pngtree-landscapes-wallpaper-images-picture-image_3021437.jpg" alt="Fondo" class="background-img">
     
-    <!-- Tarjeta central -->
     <div class="card">
-        <h1>¿Me perdonas? 🥺</h1>
-        <p>Sé que me equivoqué, pero me importas mucho.</p>
+        <h1 id="question">¿Me perdonas? 🥺</h1>
+        <p id="subtext">Sé que me equivoqué, pero me importas mucho.</p>
         
-        <div class="buttons">
+        <div class="buttons" id="buttons-container">
             <button id="btn-yes" class="btn btn-yes">Sí</button>
             <button id="btn-no" class="btn btn-no">No</button>
         </div>
@@ -26,7 +29,6 @@
         </div>
     </div>
 
-    <!-- Conecta la interactividad (JS) con esta página -->
     <script src="me_perdonas.js"></script>
 </body>
 </html>
