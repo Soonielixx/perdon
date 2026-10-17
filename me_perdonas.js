@@ -1,30 +1,64 @@
 document.addEventListener('DOMContentLoaded', () => {
     const btnYes = document.getElementById('btn-yes');
     const btnNo = document.getElementById('btn-no');
+    const question = document.getElementById('question');
+    const subtext = document.getElementById('subtext');
     const message = document.getElementById('message');
-    const buttonsContainer = document.querySelector('.buttons');
+    const buttonsContainer = document.getElementById('buttons-container');
+    const bgMusic = document.getElementById('bg-music');
+
+    let musicPlayed = false;
+    let clickCount = 0;
+
+    // 📝 Aquí puedes cambiar o agregar todas las frases que quieras
+    const frasesNo = [
+        "¿Segura? 😢",
+        "¿De verdad no? 💔",
+        "Piénsalo bien por favor...",
+        "¡No me hagas esto!",
+        "Mira que me pongo a llorar 😭",
+        "¡Ándale, di que sí!",
+        "Dime que sí, no seas malita 🥺",
+        "Me vas a romper el corazón..."
+    ];
+
+    // Función para reproducir la canción en el primer clic
+    const playMusic = () => {
+        if (!musicPlayed) {
+            bgMusic.play();
+            musicPlayed = true;
+        }
+    };
 
     // Acción cuando dice "Sí"
     btnYes.addEventListener('click', () => {
-        message.classList.remove('hidden'); // Muestra el mensaje
-        buttonsContainer.style.display = 'none'; // Oculta los botones
+        playMusic();
+        question.classList.add('hidden');
+        subtext.classList.add('hidden');
+        buttonsContainer.style.display = 'none';
+        message.classList.remove('hidden');
     });
 
-    // Acción para que el botón "No" escape
-    const moveButton = () => {
-        // Cambiamos a absolute solo cuando intentan tocarlo para no romper el diseño inicial
-        btnNo.style.position = 'absolute';
+    // Acción cuando dice "No" (bucle de palabras)
+    btnNo.addEventListener('click', () => {
+        playMusic();
         
-        const maxX = window.innerWidth - btnNo.offsetWidth - 20;
-        const maxY = window.innerHeight - btnNo.offsetHeight - 20;
+        // Cambiamos el texto de la pregunta por una de las frases del Array
+        question.innerText = frasesNo[clickCount];
+        subtext.innerText = "Por favor, presiona que 'Sí' 🙏";
         
-        const randomX = Math.floor(Math.random() * maxX);
-        const randomY = Math.floor(Math.random() * maxY);
+        // Aumentamos el contador
+        clickCount++;
         
-        btnNo.style.left = `${randomX}px`;
-        btnNo.style.top = `${randomY}px`;
-    };
+        // Si llegamos a la última frase, reiniciamos el bucle
+        if (clickCount >= frasesNo.length) {
+            clickCount = 0;
+        }
 
-    btnNo.addEventListener('mouseover', moveButton);
-    btnNo.addEventListener('touchstart', moveButton);
+        // ✨ Truco extra: Hacer el botón "Sí" un poco más grande cada vez que presiona "No"
+        let currentSize = window.getComputedStyle(btnYes).getPropertyValue('font-size');
+        let newSize = parseFloat(currentSize) + 5; // Crece 5 pixeles
+        btnYes.style.fontSize = newSize + 'px';
+        btnYes.style.padding = "15px 40px"; 
+    });
 });
