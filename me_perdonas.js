@@ -7,57 +7,42 @@ document.addEventListener('DOMContentLoaded', () => {
     const buttonsContainer = document.getElementById('buttons-container');
     const bgMusic = document.getElementById('bg-music');
 
-    let musicPlayed = false;
     let clickCount = 0;
 
-    // 📝 Aquí puedes cambiar o agregar todas las frases que quieras
+    // Las frases dramáticas en bucle
     const frasesNo = [
-        "¿Segura? 😢",
-        "¿De verdad no? 💔",
-        "Piénsalo bien por favor...",
-        "¡No me hagas esto!",
-        "Mira que me pongo a llorar 😭",
-        "¡Ándale, di que sí!",
-        "Dime que sí, no seas malita 🥺",
-        "Me vas a romper el corazón..."
+        "¡Me queda 1% de vida! 😵",
+        "¡Siento que me desmayo! 💔",
+        "¡Llamen a una ambulancia! 🚑",
+        "¡Veo la luz al final del túnel! 👼",
+        "¡Mi corazón se está deteniendo! 📉",
+        "¡Última oportunidad para salvarme! 🥺"
     ];
 
-    // Función para reproducir la canción en el primer clic
-    const playMusic = () => {
-        if (!musicPlayed) {
-            bgMusic.play();
-            musicPlayed = true;
-        }
-    };
-
-    // Acción cuando dice "Sí"
+    // Acción para salvarte (Botón Sí)
     btnYes.addEventListener('click', () => {
-        playMusic();
+        bgMusic.play(); // Aquí arranca la canción
+        
         question.classList.add('hidden');
         subtext.classList.add('hidden');
         buttonsContainer.style.display = 'none';
-        message.classList.remove('hidden');
+        
+        message.classList.remove('hidden'); // Muestra el mensaje y la foto
     });
 
-    // Acción cuando dice "No" (bucle de palabras)
+    // Acción de agonía (Botón No)
     btnNo.addEventListener('click', () => {
-        playMusic();
-        
-        // Cambiamos el texto de la pregunta por una de las frases del Array
         question.innerText = frasesNo[clickCount];
-        subtext.innerText = "Por favor, presiona que 'Sí' 🙏";
+        subtext.innerText = "¡Me voy a morir en serio!";
         
-        // Aumentamos el contador
         clickCount++;
-        
-        // Si llegamos a la última frase, reiniciamos el bucle
         if (clickCount >= frasesNo.length) {
             clickCount = 0;
         }
 
-        // ✨ Truco extra: Hacer el botón "Sí" un poco más grande cada vez que presiona "No"
+        // El botón "Sí" se hace más grande para que sea más fácil salvarte
         let currentSize = window.getComputedStyle(btnYes).getPropertyValue('font-size');
-        let newSize = parseFloat(currentSize) + 5; // Crece 5 pixeles
+        let newSize = parseFloat(currentSize) + 5;
         btnYes.style.fontSize = newSize + 'px';
         btnYes.style.padding = "15px 40px"; 
     });
