@@ -3,29 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿Me perdonas?</title>
+    <title>¡Te lo ruego!</title>
     <link rel="stylesheet" href="me_perdonas.css">
 </head>
 <body>
-    <!-- 🎵 Aquí va tu música. Cambia 'cancion.mp3' por el nombre exacto de tu archivo de audio 🎵 -->
-    <audio id="bg-music" loop>
-        <source src="Idiota.mp3" type="audio/mpeg">
+    <!-- El audio oculto -->
+    <audio id="bg-music">
+        <source src="cancion.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Imagen de fondo -->
     <img src="foto/pngtree-landscapes-wallpaper-images-picture-image_3021437.jpg" alt="Fondo" class="background-img">
     
     <div class="card">
         <h1 id="question">¿Me perdonas? 🥺</h1>
-        <p id="subtext">Sé que me equivoqué, pero me importas mucho.</p>
+        <p id="subtext">¡Me voy a morir de tristeza si no me perdonas!</p>
         
         <div class="buttons" id="buttons-container">
-            <button id="btn-yes" class="btn btn-yes">Sí</button>
+            <button id="btn-yes" class="btn btn-yes">Sí, te perdono</button>
             <button id="btn-no" class="btn btn-no">No</button>
         </div>
         
         <div id="message" class="hidden">
-            <h2>¡Gracias! Sabía que dirías que sí ❤️</h2>
+            <h2>¡Sabía que me salvarías la vida! ❤️</h2>
+            <!-- Cambia "nuestra_foto.jpg" por el nombre de la imagen que quieres mostrar -->
+            <img src="foto/nuestra_foto.jpg" alt="Felices" class="success-img">
         </div>
     </div>
 
